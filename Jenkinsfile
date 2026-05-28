@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     IMAGE_NAME = "praveenpathange/frontend"
     DOCKER_CREDS = credentials('dockerhub')
@@ -68,6 +67,6 @@ post {
         echo 'Pipeline failed!'
     }
 }
-```
+
 
 }
