@@ -1,0 +1,7 @@
+Explain Project in Interview
+
+"I implemented a complete CI/CD pipeline for deploying multiple microservices on Amazon EKS using Jenkins.
+I created an EC2-based Jenkins server, installed Docker, kubectl, eksctl, and configured AWS CLI.
+Jenkins automatically pulled source code from GitHub, built Docker images, pushed them to DockerHub, and deployed the applications 
+into Kubernetes using deployment and service manifests.
+I used EKS for container orchestration and automated the entire deployment lifecycle."
