@@ -9,10 +9,10 @@ pipeline {
     stages {
 
         stage('Clone Code') {
-            steps {
-                git 'https://github.com/yourrepo/microservice.git'
-            }
-        }
+    steps {
+        git 'https://github.com/PraveenPatange/microservices-project.git'
+    }
+}
 
         stage('Build Docker Image') {
             steps {
