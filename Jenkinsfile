@@ -2,17 +2,11 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-        IMAGE_NAME = "dockerhub-user/frontend"
+        IMAGE_NAME = "yourdockerhubusername/frontend"
+        DOCKER_CREDS = credentials('dockerhub')
     }
 
     stages {
-
-        stage('Clone Code') {
-    steps {
-        git 'https://github.com/PraveenPatange/microservices-project.git'
-    }
-}
 
         stage('Build Docker Image') {
             steps {
@@ -22,15 +16,14 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                sh 'echo $DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin'
                 sh 'docker push $IMAGE_NAME:$BUILD_NUMBER'
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f deployment.yaml'
-                sh 'kubectl apply -f service.yaml'
+                sh 'kubectl get nodes'
             }
         }
     }
